@@ -1,19 +1,44 @@
 aid: revie
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/revie.png
 name: Revie
-description: Revie is a company surfaced as a portfolio company of 500-global and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: Revie is an AI-powered customer review collection and WhatsApp marketing
+  automation platform for e-commerce businesses, with a focus on the Latin American
+  market. It requests and collects product reviews over WhatsApp (in text, photo,
+  video, and voice-note formats) after a purchase, then applies AI sentiment analysis
+  and keyword grouping to surface customer feedback in a dashboard. Revie also powers
+  WhatsApp marketing campaigns, customer segmentation, and discount incentives, and
+  integrates with Shopify, Tienda Nube, and VTEX storefronts. The company exposes no
+  public developer API or SDK; its product is delivered as installable storefront apps.
 url: https://raw.githubusercontent.com/api-evangelist/revie/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
-x-tier: stub
+x-tier: profiled
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
+- Reviews
+- WhatsApp
+- Marketing
+- E-commerce
+- Customer Experience
+- Messaging
+- Artificial Intelligence
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -21,5 +46,24 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/revie-domain-security.yml
 - type: Website
   url: https://revie.lat
+- type: Pricing
+  url: https://revie.lat/planes
+- type: Blog
+  url: https://revie.lat/blog/ecommerce
+- type: HelpCenter
+  url: https://revie.lat/centro-de-ayuda
+- type: Documentation
+  url: https://help.revie.ai/
+- type: PrivacyPolicy
+  url: https://revie.lat/aviso-de-privacidad
+- type: SignUp
+  url: https://apps.shopify.com/revie
+x-enrichment:
+  date: '2026-07-20'
+  status: minimal
+  artifacts_added: 1
+  pass: local-v1
