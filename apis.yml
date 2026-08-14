@@ -29,7 +29,7 @@ x-tier: profiled
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-08-13'
 tags:
 - Company
 - Reviews
@@ -39,6 +39,8 @@ tags:
 - Customer Experience
 - Messaging
 - Artificial Intelligence
+- Shopify
+- Latin America
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -62,8 +64,41 @@ common:
   url: https://revie.lat/aviso-de-privacidad
 - type: SignUp
   url: https://apps.shopify.com/revie
+- type: Login
+  url: https://app.revie.lat/
+- type: Plans
+  url: plans/revie-plans-pricing.yml
+- type: Components
+  url: components/revie-components.yml
+- type: LLMsTxt
+  url: llms/revie-llms.txt
+- type: LinkedIn
+  url: https://www.linkedin.com/company/revieio
 x-enrichment:
-  date: '2026-07-20'
+  date: '2026-08-13'
   status: minimal
-  artifacts_added: 1
+  artifacts_added: 4
   pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Revie ships only end-user storefront apps for Shopify, Tiendanube and VTEX — there
+    is no developer portal, no API reference, no SDK and no GitHub organisation, and
+    the one API host that exists (api.revie.lat) is the private AWS API Gateway backend
+    for the app.revie.lat dashboard, named in the SPA's own config.js and answering
+    every path with 403 "Missing Authentication Token".
+  evidence:
+  - url: https://api.revie.lat/openapi.json
+    status: 403
+  - url: https://www.revie.lat/openapi.json
+    status: 404
+  - url: https://help.revie.ai/openapi.json
+    status: 404
+  - url: https://www.revie.lat/llms.txt
+    status: 404
+  - url: https://www.revie.lat/.well-known/agent-card.json
+    status: 404
+  - url: https://app.revie.lat/config/config.js
+    status: 200
+  checked: '2026-08-13'
