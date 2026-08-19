@@ -1,0 +1,128 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTPS probes of every Revie host reachable from apis.yml (revie.lat,
+  revie.ai, app.revie.lat, api.revie.lat, help.revie.ai)
+note: >-
+  NO HIT. Every /.well-known/ path probed on every Revie host returned 404 or 403.
+  revie.lat and revie.ai are Webflow-hosted marketing sites and answer every
+  /.well-known/* request with an 88-byte HTML body reading "Invalid .well-known
+  request" — an HTML shell, not a document. app.revie.lat is a create-react-app SPA
+  whose catch-all returns the index.html shell with a 404 status. api.revie.lat is an
+  AWS API Gateway that answers every unmatched path, including /.well-known/*, with
+  403 {"message":"Missing Authentication Token"}. help.revie.ai is a Crisp-hosted help
+  centre that 404s every path. Because no path returned a real document, NO WellKnown
+  or SecurityTxt pointer is emitted in apis.yml — this file records an absence, and an
+  absence must not be scored as a presence.
+hosts:
+- host: https://revie.lat
+  role: marketing site (Webflow); redirects to https://www.revie.lat
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: https://revie.ai
+  role: marketing site (Webflow), Spanish + https://en.revie.ai English mirror
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: https://app.revie.lat
+  role: merchant dashboard SPA (create-react-app)
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+- host: https://api.revie.lat
+  role: >-
+    private application backend for the app.revie.lat dashboard (AWS API Gateway).
+    Named by https://app.revie.lat/config/config.js as window.url_server =
+    "https://api.revie.lat/api/". Not a published developer API — no reference, no
+    key issuance, no documentation anywhere on Revie's public surface.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 403
+    file: null
+  - path: /.well-known/agent.json
+    status: 403
+    file: null
+- host: https://help.revie.ai
+  role: help centre (Crisp Helpdesk)
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+summary:
+  hosts_probed: 5
+  paths_probed: 30
+  documents_found: 0
+  security_txt: false
+  agent_card: false
+  openid_configuration: false
+  api_catalog: false
+  ai_plugin: false

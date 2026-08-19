@@ -1,0 +1,125 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.revie.lat/planes
+docs:
+- https://www.revie.lat/planes
+- https://en.revie.ai/
+- https://apps.shopify.com/revie
+currency: USD
+billing_period: monthly
+note: >-
+  Revie publishes product pricing but no API pricing — there is no public developer
+  API, so none of these tiers grant or meter API access. Two distinct published price
+  ladders exist and both are recorded verbatim: the storefront-app ladder shown on the
+  Shopify listing and the /planes page (Lite / Pro / Plus, priced per month plus a
+  per-review-request and per-country WhatsApp message cost), and an order-volume ladder
+  also shown on /planes and en.revie.ai (Plan 1000 / Plan 2000 / custom enterprise,
+  priced by monthly order count). Revie does not reconcile the two ladders on its own
+  pages, so they are not merged here. Per-message pricing is country-dependent and
+  Revie exposes a calculator rather than a published rate card, so message rates are
+  recorded only where a figure is actually printed.
+plan_count: 7
+plans:
+- name: Pay As You Go
+  ladder: storefront-app
+  price: 0
+  currency: USD
+  billing_period: monthly
+  usage_pricing: USD 0.08 per WhatsApp message
+  included_quota: null
+  source: https://apps.shopify.com/revie
+- name: Plan Lite
+  ladder: storefront-app
+  price: 9
+  currency: USD
+  billing_period: monthly
+  usage_pricing: >-
+    USD 0.015 per review request (Shopify listing) plus the per-country WhatsApp
+    message cost (/planes)
+  features:
+  - Imports 60 days of past orders
+  - Reviews widget
+  - Review moderation
+  - Review importing
+  - Photo, video and audio reviews
+  - Support
+  source: https://www.revie.lat/planes
+- name: Plan Pro
+  ladder: storefront-app
+  price: 39
+  currency: USD
+  billing_period: monthly
+  usage_pricing: >-
+    USD 0.015 per review request (Shopify listing) plus the per-country WhatsApp
+    message cost (/planes)
+  features:
+  - Everything in Lite
+  - Message selection
+  - Automatic publishing
+  - Discounts for reviews
+  - AI review analysis
+  - Google Shopping integration
+  - Send-frequency rules
+  source: https://www.revie.lat/planes
+- name: Plan Plus
+  ladder: storefront-app
+  price: 99
+  currency: USD
+  billing_period: monthly
+  usage_pricing: >-
+    USD 0.015 per review request (Shopify listing) plus the per-country WhatsApp
+    message cost (/planes)
+  popular: true
+  features:
+  - Everything in Pro
+  - Personalized messages
+  - Company phone number connection
+  - WhatsApp marketing
+  - Dedicated support
+  source: https://www.revie.lat/planes
+- name: Plan 1000
+  ladder: order-volume
+  price: 59
+  currency: USD
+  billing_period: monthly
+  included_quota: 1000 orders per month
+  features:
+  - Everything in the 500 plan
+  - Google Shopping integration
+  - Send-frequency rules
+  source: https://www.revie.lat/planes
+- name: Plan 2000
+  ladder: order-volume
+  price: 99
+  currency: USD
+  billing_period: monthly
+  included_quota: 2000 orders per month
+  popular: true
+  features:
+  - Everything in the 1000 plan
+  - Personalized messages
+  - Dedicated support
+  source: https://www.revie.lat/planes
+- name: Plan personalizado (enterprise)
+  ladder: order-volume
+  price: null
+  currency: USD
+  billing_period: monthly
+  included_quota: more than 2000 orders per month
+  contact_required: true
+  contact: mailto:hola@revie.ai
+  features:
+  - Monthly request volume scaled to order count
+  - Company WhatsApp number
+  - Account manager
+  source: https://www.revie.lat/planes
+trial:
+  available: true
+  note: >-
+    "Prueba gratis" / "Start Free Trial" buttons on /planes route to the Shopify app
+    listing (https://apps.shopify.com/revie); Revie does not publish trial length or
+    trial limits on its own pages.
+api_access:
+  metered: false
+  note: >-
+    No tier lists API calls, API keys, rate limits or developer access as an entitlement.

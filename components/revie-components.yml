@@ -1,0 +1,130 @@
+generated: '2026-08-13'
+method: searched
+source: https://revie.crisp.help/es/article/que-widgets-puedo-usar-para-mostrar-mis-resenas-kwbcn6/
+docs:
+- https://revie.crisp.help/es/article/que-widgets-puedo-usar-para-mostrar-mis-resenas-kwbcn6/
+- https://revie.crisp.help/es/article/como-configurar-los-widgets-de-revie-en-shopify-usando-bloques-7a08f3/
+- https://revie.crisp.help/es/article/como-configurar-los-widgets-de-revie-en-shopify-mediante-codigo-17z9lpq/
+- https://revie.crisp.help/es/article/como-configurar-los-widgets-de-revie-en-tiendanube-a87i1v/
+- https://revie.crisp.help/es/article/configurar-los-widgets-de-revie-en-vtex-g81bjt/
+note: >-
+  Revie's only published client-side surface. These are storefront review widgets
+  installed inside a host e-commerce platform's theme, NOT a developer component
+  library: Revie publishes no npm/CDN loader package, no element API, no configuration
+  reference and no versioning for them. Installation is a merchant action in the
+  platform's theme editor (Shopify theme blocks, Tiendanube "Posición de los
+  componentes", VTEX), with a documented Liquid/HTML fallback for legacy Shopify 1.0
+  themes. The fallback is the only place Revie exposes anything machine-readable: the
+  widgets bind to Shopify metafields under the `revie` namespace. Widget names and the
+  code fragments below are quoted verbatim from Revie's own help centre.
+loaders: []
+families:
+- family: Product review widgets
+  surface: storefront product page
+  components:
+  - name: Reviews Widget (Product) — Versión Simple
+    description: >-
+      Revie's simplest and most-used widget; renders text, photo, audio and video
+      reviews in a plain ordered list.
+  - name: Reviews Widget (Product) — Versión Modern AI
+    description: >-
+      The simple widget plus AI elements: a star-rating breakdown, a photo carousel,
+      keyword tags, and an optional AI-generated review summary.
+- family: Testimonial widgets
+  surface: storefront content pages
+  note: Four styles, per Revie's widget catalogue.
+  components:
+  - name: Modern
+    description: Reviews shown simply and in order.
+  - name: Modern 3 columns
+    description: Three-column variant of Modern.
+  - name: Reviews Grid
+    description: Mosaic layout that foregrounds customer-submitted photography.
+  - name: Background text
+    description: Social-feed styling built from customer photos and reviews.
+  - name: Carousel
+    description: Horizontal carousel that shows more reviews in less vertical space.
+- family: Star badge
+  surface: product page and collection grid
+  components:
+  - name: Star Widget
+    description: >-
+      Star-rating badge for the product page and for product cards in a collection
+      listing.
+platforms:
+- platform: Shopify
+  install_methods:
+  - method: theme-block
+    description: >-
+      Shopify Online Store 2.0 themes — Customize > Add Block > select the Revie
+      widget block.
+    docs: https://revie.crisp.help/es/article/como-configurar-los-widgets-de-revie-en-shopify-usando-bloques-7a08f3/
+  - method: code
+    description: >-
+      Legacy 1.0 themes — enable "Activar configuración para plantilla 1.0" in Revie
+      settings, then paste Revie markers into the theme templates.
+    docs: https://revie.crisp.help/es/article/como-configurar-los-widgets-de-revie-en-shopify-mediante-codigo-17z9lpq/
+    snippets:
+    - target: product template (product-template.liquid), before price
+      purpose: star badge on the product page
+      code: |
+        <!-- Start of Revie code -->
+        <div class="product__price"></div>
+        <!-- End of Revie code -->
+    - target: product.liquid, before the product-recommendations section
+      purpose: review listing on the product page
+      code: |
+        <!-- Start of Revie code -->
+        <div class="page-content--product"></div>
+        <!-- End of Revie code -->
+    - target: collection template (product-grid.liquid)
+      purpose: star badge on collection cards
+      code: |
+        <!-- Start of Revie code -->
+        {% if product.metafields.revie.reviewData %}
+        <div class="shopify-product-revie" data-id="{{ product.id }}">
+          <div id="revieStar">
+            <div title="{{ product.metafields.revie.reviewData.reviewAverageValue }} Estrellas">
+              <i data-starlist="{{ product.metafields.revie.reviewData.reviewAverageValue }}"></i>
+              <span>{{ product.metafields.revie.reviewData.reviewCount }} reseñas</span>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        <!-- End of Revie code -->
+- platform: Tiendanube
+  install_methods:
+  - method: admin-configuration
+    description: >-
+      Configuración > Posición de los componentes selects which widgets render on
+      product and category pages, from the positions the theme exposes.
+    docs: https://revie.crisp.help/es/article/como-configurar-los-widgets-de-revie-en-tiendanube-a87i1v/
+- platform: VTEX
+  install_methods:
+  - method: admin-configuration
+    description: >-
+      Widgets configured in the VTEX admin after Revie is connected with a
+      merchant-created VTEX API key.
+    docs: https://revie.crisp.help/es/article/configurar-los-widgets-de-revie-en-vtex-g81bjt/
+data_bindings:
+- platform: Shopify
+  mechanism: metafields
+  namespace: revie
+  fields:
+  - product.metafields.revie.reviewData
+  - product.metafields.revie.reviewAverageValue
+  - product.metafields.revie.reviewCount
+  note: >-
+    Revie writes aggregate review data into the merchant's own Shopify product
+    metafields, which the theme can read directly. This is the closest thing to a
+    programmable Revie data surface a merchant can reach without Revie's dashboard.
+x-consumer-side-apis:
+- platform: VTEX
+  note: >-
+    Revie CONSUMES VTEX's API — the merchant creates a VTEX user role and API key and
+    hands the credentials to Revie. This is VTEX's API, not Revie's, and is recorded
+    only to prevent it being mistaken for a Revie developer program.
+  docs: https://revie.crisp.help/es/article/como-crear-tu-api-key-de-vtex-para-revie-1nmwz89/
+- platform: Google Shopping
+  note: Reviews syndicated to Google Shopping; no merchant-facing contract published.
+  docs: https://revie.crisp.help/es/article/integra-tus-reviews-con-google-shopping-lqyvdc/
