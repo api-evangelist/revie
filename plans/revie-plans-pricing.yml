@@ -123,3 +123,53 @@ api_access:
   metered: false
   note: >-
     No tier lists API calls, API keys, rate limits or developer access as an entitlement.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units: []
+  plans:
+  - name: Pay As You Go
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Plan Lite
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Plan Pro
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Plan Plus
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Plan 1000
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Plan 2000
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Plan personalizado (enterprise)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
